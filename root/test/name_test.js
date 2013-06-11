@@ -27,9 +27,16 @@
     }
   });
 
-  test('is present', function() {
+  test('presence', function() {
     expect(1);
-    ok(window['{%= root %}'], '{%= root %} should be present');
+    ok(typeof {%= exports %} !== "undefined", '{%= exports %} should be present');
+  });
+
+  test('external', function() {
+    expect(2);
+    ok(typeof {%= exports %}.external !== "undefined", "{%= exports %} should be present");
+    var expected = '{%= name %} v'+{%= exports %}._.version;
+    strictEqual({%= exports %}.external(), expected);
   });
 
 }());

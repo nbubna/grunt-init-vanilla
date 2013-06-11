@@ -1,5 +1,5 @@
 /*
- * {%= name %}
+ * {%= title || name %}
  * {%= homepage %}
  *
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
@@ -15,18 +15,18 @@
     };
 
     // external API
-    var {%= root %} = {
+    var {%= exports %} = {
         _: _,// comment to hide internal API
-        external: function(){
-            console.log('You used "{%= name %} v'+_.version+'"!');
+        external: function() {
+            return '{%= name %} v'+_.version;
         }
-    }
+    };
 
-    // export {%= root %}
+    // export {%= exports %}
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = {%= root %};
+        module.exports = {%= exports %};
     } else {
-        this.{%= root %} = {%= root %};
+        this.{%= exports %} = {%= exports %};
     }
 
 }());

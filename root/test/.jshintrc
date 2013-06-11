@@ -12,7 +12,7 @@
   "eqnull": true,
   "browser": true,
   "predef": [
-    "{%= root %}",
+    "{%= exports %}",
     "QUnit",
     "module",
     "test",
