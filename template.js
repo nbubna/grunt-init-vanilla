@@ -35,15 +35,13 @@ exports.template = function(grunt, init, done) {
     init.prompt('repository'),
     init.prompt('homepage'),
     init.prompt('bugs'),
-    init.prompt('licenses', 'MIT GPL'),
+    init.prompt('licenses', 'MIT'),
     init.prompt('author_name'),
     init.prompt('author_email'),
     init.prompt('author_url')
   ], function(err, props) {
     // A few additional properties.
-    props.dependencies {};
-    props.keywords = [];
-    props.root = props.name.replace(/\W(\w)?/g, function(m, w) {
+    props.exports = props.name.replace(/\W(\w)?/g, function(m, w) {
       return w ? w.toUpperCase() : '';
     });
 
@@ -57,12 +55,13 @@ exports.template = function(grunt, init, done) {
     init.copyAndProcess(files, props, {noProcess: 'libs/**'});
 
     // Generate package.json file, used by npm and grunt.
-    init.writePackageJSON('package.json', {
-      name: props.name,
-      version: props.version,
+    init.writePackageJSON('package.json', grunt.util._.extend(props, {
+      keywords: props.title.toLowerCase().split(' '),
+      dependencies: {},
+      licenses: props.licenses,
       npm_test: 'grunt qunit',
       // TODO: pull from grunt's package.json
-      node_version: '>= 0.8.0'
+      node_version: '>= 0.8.0',
       devDependencies: {
         'grunt-contrib-jshint': '~0.1.1',
         'grunt-contrib-qunit': '~0.1.1',
@@ -70,11 +69,8 @@ exports.template = function(grunt, init, done) {
         'grunt-contrib-uglify': '~0.1.1',
         'grunt-contrib-watch': '~0.2.0',
         'grunt-contrib-clean': '~0.4.0',
-      },
-    });
-
-    // Generate package.json file.
-    init.writePackageJSON('package.json', props);
+      }
+    }));
 
     // All done!
     done();
