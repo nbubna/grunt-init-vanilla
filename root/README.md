@@ -13,7 +13,7 @@ In your web page:
 ```html
 <script src="dist/{%= name %}.min.js"></script>
 <script>
-{%= root %}.external();
+{%= exports %}.external();
 </script>
 ```
 

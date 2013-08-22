@@ -5,8 +5,8 @@
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
-
-(function() {
+(function(window) {
+    "use strict";
 
     // internal API
     var _ = {
@@ -23,10 +23,12 @@
     };
 
     // export {%= exports %}
-    if (typeof module !== 'undefined' && module.exports) {
+    if (typeof define === 'function' && define.amd) {
+        define(function(){ return {%= exports %}; });
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = {%= exports %};
     } else {
-        this.{%= exports %} = {%= exports %};
+        window.{%= exports %} = {%= exports %};
     }
 
-}());
+}(window));

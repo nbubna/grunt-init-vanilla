@@ -69,6 +69,7 @@ exports.template = function(grunt, init, done) {
         'grunt-contrib-uglify': '~0.2.0',
         'grunt-contrib-watch': '~0.4.0',
         'grunt-contrib-clean': '~0.4.0',
+        'grunt-contrib-compress': '~0.5.2',
       }
     }));
 

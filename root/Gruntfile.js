@@ -34,6 +34,15 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.min.js'
       },
     },
+    compress: {
+      options: {
+        mode: 'gzip'
+      },
+      dist: {
+        src: ['dist/<%= pkg.name %>.min.js'],
+        dest: 'dist/<%= pkg.name %>.min.js'
+      },
+    },
     qunit: {
       files: ['test/**/*.html']
     },
@@ -80,8 +89,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'clean', 'concat', 'uglify', 'qunit', 'compress']);
 
 };
