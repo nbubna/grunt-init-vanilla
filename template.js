@@ -59,7 +59,7 @@ exports.template = function(grunt, init, done) {
       keywords: props.title.toLowerCase().split(' '),
       dependencies: {},
       licenses: props.licenses,
-      npm_test: 'grunt qunit',
+      npm_test: 'grunt jshint qunit --verbose',
       // TODO: pull from grunt's package.json
       node_version: '>= 0.8.0',
       devDependencies: {
@@ -70,6 +70,7 @@ exports.template = function(grunt, init, done) {
         'grunt-contrib-watch': '~0.4.0',
         'grunt-contrib-clean': '~0.4.0',
         'grunt-contrib-compress': '~0.5.2',
+        'grunt-cli': '~0.1',
       }
     }));
 
