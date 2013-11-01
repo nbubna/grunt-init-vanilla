@@ -31,6 +31,7 @@ exports.template = function(grunt, init, done) {
     init.prompt('name'),
     init.prompt('title', 'My Library'),
     init.prompt('description', 'The best JavaScript library ever.'),
+    init.prompt('keywords', 'vanilla,js,library'),
     init.prompt('version'),
     init.prompt('repository'),
     init.prompt('homepage'),
@@ -56,7 +57,7 @@ exports.template = function(grunt, init, done) {
 
     // Generate package.json file, used by npm and grunt.
     init.writePackageJSON('package.json', grunt.util._.extend(props, {
-      keywords: props.title.toLowerCase().split(' '),
+      keywords: props.keywords.toLowerCase().split(' '),
       dependencies: {},
       licenses: props.licenses,
       main: 'dist/'+props.name+'.js',
