@@ -59,18 +59,20 @@ exports.template = function(grunt, init, done) {
       keywords: props.title.toLowerCase().split(' '),
       dependencies: {},
       licenses: props.licenses,
+      main: 'dist/'+props.name+'.js',
+      files: ["dist"],
       npm_test: 'grunt jshint qunit --verbose',
       // TODO: pull from grunt's package.json
       node_version: '>= 0.8.0',
       devDependencies: {
-        'grunt-contrib-jshint': '~0.7.0',
-        'grunt-contrib-qunit': '~0.2.0',
+        'grunt-contrib-jshint': '~0.7.1',
+        'grunt-contrib-qunit': '~0.3.0',
         'grunt-contrib-concat': '~0.3.0',
-        'grunt-contrib-uglify': '~0.2.0',
-        'grunt-contrib-watch': '~0.4.0',
-        'grunt-contrib-clean': '~0.4.0',
+        'grunt-contrib-uglify': '~0.2.5',
+        'grunt-contrib-watch': '~0.5.3',
+        'grunt-contrib-clean': '~0.5.0',
         'grunt-contrib-compress': '~0.5.2',
-        'grunt-cli': '~0.1',
+        'grunt-cli': '~0.1.9',
       }
     }));
 
