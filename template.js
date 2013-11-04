@@ -31,7 +31,7 @@ exports.template = function(grunt, init, done) {
     init.prompt('name'),
     init.prompt('title', 'My Library'),
     init.prompt('description', 'The best JavaScript library ever.'),
-    init.prompt('keywords', 'vanilla,js,library'),
+    init.prompt('keywords', 'vanilla js'),
     init.prompt('version'),
     init.prompt('repository'),
     init.prompt('homepage'),
